@@ -2,8 +2,8 @@ package dev.marshallBits.breakingBadApi.controllers;
 
 import dev.marshallBits.breakingBadApi.dto.CharacterDTO;
 import dev.marshallBits.breakingBadApi.dto.CreateCharacterDTO;
-import dev.marshallBits.breakingBadApi.services.CharacterService;
-import lombok.RequiredArgsConstructor;
+import dev.marshallBits.breakingBadApi.services.CharacterServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,12 +12,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/characters")
-@RequiredArgsConstructor
 public class CharacterController {
 
-    private final CharacterService characterService;
+    @Autowired
+    private CharacterServiceImpl characterService;
 
-    // ✅ IMPLEMENTADO: Obtener todos los personajes
+     // ✅ IMPLEMENTADO: Obtener todos los personajes
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<CharacterDTO> getAllCharacters() {

@@ -4,16 +4,17 @@ import dev.marshallBits.breakingBadApi.dto.CharacterDTO;
 import dev.marshallBits.breakingBadApi.dto.CreateCharacterDTO;
 import dev.marshallBits.breakingBadApi.models.Character;
 import dev.marshallBits.breakingBadApi.repositories.CharacterRepository;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 public class CharacterServiceImpl implements CharacterService {
 
-    private final CharacterRepository characterRepository;
+    @Autowired
+    private CharacterRepository characterRepository;
 
     @Override
     public List<CharacterDTO> findAll() {

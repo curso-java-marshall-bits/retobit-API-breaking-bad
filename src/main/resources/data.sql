@@ -7,13 +7,13 @@ CREATE TABLE IF NOT EXISTS characters (
 );
 
 INSERT INTO characters (id, name, occupation, status, image_url) VALUES
-(1, 'Walter White', 'Profesor de Química', 'DEAD', 'https://example.com/walter-white.jpg'),
-(2, 'Jesse Pinkman', 'Ex-estudiante', 'DEAD', 'https://example.com/jesse-pinkman.jpg'),
-(3, 'Skyler White', 'Contable', 'DEAD', 'https://example.com/skyler-white.jpg'),
-(4, 'Hank Schrader', 'Agente DEA', 'DEAD', 'https://example.com/hank-schrader.jpg'),
-(5, 'Marie Schrader', 'Técnico Radiológico', 'DEAD', 'https://example.com/marie-schrader.jpg'),
-(6, 'Walter White Jr.', 'Estudiante', 'DEAD', 'https://example.com/walter-jr.jpg'),
-(7, 'Saul Goodman', 'Abogado', 'DEAD', 'https://example.com/saul-goodman.jpg'),
-(8, 'Mike Ehrmantraut', 'Ex-policía', 'DEAD', 'https://example.com/mike-ehrmantraut.jpg'),
-(9, 'Gus Fring', 'Empresario', 'DEAD', 'https://example.com/gus-fring.jpg'),
-(10, 'Tuco Salamanca', 'Distribuidor', 'DEAD', 'https://example.com/tuco-salamanca.jpg');
+(1, 'Walter White', 'Profesor de Química', 'ALIVE', 'https://example.com/walter-white.jpg'),
+(2, 'Jesse Pinkman', 'Ex-estudiante', 'ALIVE', 'https://example.com/jesse-pinkman.jpg'),
+(3, 'Skyler White', 'Contable', 'ALIVE', 'https://example.com/skyler-white.jpg'),
+(4, 'Hank Schrader', 'Agente DEA', 'ALIVE', 'https://example.com/hank-schrader.jpg'),
+(5, 'Marie Schrader', 'Técnico Radiológico', 'ALIVE', 'https://example.com/marie-schrader.jpg'),
+(6, 'Walter White Jr.', 'Estudiante', 'ALIVE', 'https://example.com/walter-jr.jpg'),
+(7, 'Saul Goodman', 'Abogado', 'ALIVE', 'https://example.com/saul-goodman.jpg'),
+(8, 'Mike Ehrmantraut', 'Ex-policía', 'ALIVE', 'https://example.com/mike-ehrmantraut.jpg'),
+(9, 'Gus Fring', 'Empresario', 'ALIVE', 'https://example.com/gus-fring.jpg'),
+(10, 'Tuco Salamanca', 'Distribuidor', 'ALIVE', 'https://example.com/tuco-salamanca.jpg');

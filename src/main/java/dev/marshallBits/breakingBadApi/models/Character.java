@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "characters")
+@Table(name = "characters") // si no ponemos el nombre, JPA usará "character" por defecto, en este caso queremos que se llame "characters"
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +18,7 @@ public class Character {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false) // nullable = false significa que este campo no puede ser nulo, así que es obligatorio
     private String name;
 
     @Column(nullable = false)
@@ -26,12 +26,7 @@ public class Character {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private CharacterStatus status;
-
-    @ElementCollection
-    @CollectionTable(name = "character_seasons", joinColumns = @JoinColumn(name = "character_id"))
-    @Column(name = "season")
-    private List<Integer> seasons;
+    private CharacterStatus status; // vivo o muerto
 
     private String imageUrl;
 }

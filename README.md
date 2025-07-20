@@ -1,119 +1,133 @@
-# RetoBit: Breaking Bad API 🧪⚗️
+# RetoBit: API de Breaking Bad 👨‍🔬
 
-¡Bienvenido al mundo de Breaking Bad! En este RetoBit desarrollarás una API REST completa para gestionar información de los personajes de la famosa serie. Trabajarás con Spring Boot, JPA, H2 Database y aprenderás a crear endpoints robustos.
+En este RetoBit vamos a continuar el desarrollo de una API de breaking bad. La API ya fue implementada por compis de nuestro equipo y ahora nos han asignado la tarea de añadir nuevas funcionalidades. Deberemos implementar dos endpoints que nos permitirán obtener un personaje por su ID y cambiar su estado de "Alive" a "Dead". Además, también debemos añadir validaciones en el DTO de creación de personajes.
+
+Puedes ejecutar el proyecto para ver cómo funciona la API y probar los endpoints ya están implementados. La API está construida con Spring Boot y utiliza una base de datos en memoria para almacenar los personajes, así que **no hace falta que configures nada**. Simplemente, ejecuta el proyecto y podrás probar los endpoints ya implementados con Postman.
+
+### Endpoints ya implementados:
+- `GET /api/characters`: Obtiene todos los personajes.
+- `POST /api/characters`: Crea un nuevo personaje.
 
 ## ¿Qué practicarás?
 
-- Spring Boot y arquitectura REST
-- JPA (Java Persistence API) y entidades
-- Base de datos H2 en memoria
-- Inyección de dependencias
-- Controladores REST
-- Servicios y capas de abstracción
-- Validaciones con Bean Validation
-- Manejo de excepciones
-- DTOs (Data Transfer Objects)
+- Controladores
+- DTOs
+- Servicios
+- Repositorios
+- Excepciones
+- Modelos
 
-## 🎯 Objetivo
+## Fork del repositorio:
 
-Crear una API REST que permita:
-- ✅ Obtener todos los personajes
-- ✅ Buscar personaje por ID
-- ✅ Buscar personajes por ocupación
-- 🔧 **[TU TAREA]** Buscar personajes por estado (vivo/muerto)
-- 🔧 **[TU TAREA]** Crear nuevo personaje
-- 🔧 **[TU TAREA]** Actualizar personaje existente
+Haz un fork del repo.
 
-## 📋 Estructura del proyecto
+Pulsa el botón Fork en github:
 
-```
-src/main/java/dev/marshallBits/breakingBadApi/
-├── BreakingBadApiApplication.java
-├── models/
-│   ├── Character.java           ✅ (Completo)
-│   └── CharacterStatus.java     ✅ (Completo)
-├── repositories/
-│   └── CharacterRepository.java ✅ (Completo)
-├── services/
-│   ├── CharacterService.java    ✅ (Completo)
-│   └── CharacterServiceImpl.java 🔧 (Para completar)
-├── controllers/
-│   └── CharacterController.java 🔧 (Para completar)
-├── dto/
-│   ├── CharacterDTO.java        ✅ (Completo)
-│   └── CreateCharacterDTO.java  🔧 (Para completar)
-└── exceptions/
-    ├── CharacterNotFoundException.java ✅ (Completo)
-    └── GlobalExceptionHandler.java     🔧 (Para completar)
-```
+![fork](public/img1.png)
 
-## 🚀 Cómo empezar
+Esto creará una copia del repositorio en tu perfil de Github.
 
-1. **Fork del repositorio**: Haz un fork de este repositorio
-2. **Clona tu fork**: `git clone <tu-fork-url>`
-3. **Ejecuta la aplicación**: `./mvnw spring-boot:run`
-4. **Accede a H2 Console**: http://localhost:8080/h2-console
-   - JDBC URL: `jdbc:h2:mem:testdb`
-   - Username: `sa`
-   - Password: (vacío)
+## Clona el repo en tu computadora
 
-## 📊 Base de datos
+Ahora hay que descargarse el proyecto en tu computadora.
 
-La aplicación se inicializa con 10 personajes icónicos de Breaking Bad:
+### 1. Asegúrate de que estás en la URL de TU copia del repositorio
 
-| ID | Nombre | Ocupación | Estado | Temporadas |
-|----|--------|-----------|--------|------------|
-| 1 | Walter White | Profesor de Química | Muerto | 1,2,3,4,5 |
-| 2 | Jesse Pinkman | Ex-estudiante | Vivo | 1,2,3,4,5 |
-| 3 | Skyler White | Contable | Vivo | 1,2,3,4,5 |
-| 4 | Hank Schrader | Agente DEA | Muerto | 1,2,3,4,5 |
-| 5 | Marie Schrader | Técnico Radiológico | Vivo | 1,2,3,4,5 |
-| 6 | Walter White Jr. | Estudiante | Vivo | 1,2,3,4,5 |
-| 7 | Saul Goodman | Abogado | Vivo | 2,3,4,5 |
-| 8 | Mike Ehrmantraut | Ex-policía | Muerto | 2,3,4,5 |
-| 9 | Gus Fring | Empresario | Muerto | 2,3,4 |
-| 10 | Tuco Salamanca | Distribuidor | Muerto | 1,2 |
 
-## 🎯 Tareas a completar
+Si la URL es esta: https://github.com/curso-java-marshall-bits/retobit-API-breaking-bad **NO ES CORRECTO**.
 
-### 1. Completar CharacterServiceImpl.java
-- Implementar método `findByStatus(CharacterStatus status)`
-- Implementar método `createCharacter(CreateCharacterDTO dto)`
-- Implementar método `updateCharacter(Long id, CreateCharacterDTO dto)`
 
-### 2. Completar CharacterController.java
-- Endpoint `GET /api/characters/status/{status}` 
-- Endpoint `POST /api/characters`
-- Endpoint `PUT /api/characters/{id}`
+Donde aparece 'curso-java-marshall-bits' debería aparecer tu nombre de usuario. Haz click en tu perfil y mira tus repositorios para comprobar si hiciste el fork. En caso contrario vuelve al paso anterior.
 
-### 3. Crear CreateCharacterDTO.java
-- Campos necesarios con validaciones apropiadas
-- Anotaciones Bean Validation (@NotBlank, @NotNull, etc.)
 
-### 4. Completar GlobalExceptionHandler.java
-- Manejo de CharacterNotFoundException
-- Manejo de errores de validación
-- Respuestas HTTP apropiadas
+### 2. Pulsa en "code" para ver la URL del repositorio y cópiala
 
-## 🧪 Endpoints disponibles
+![clone](public/img2.png)
 
-### ✅ Implementados
-```http
-GET /api/characters           # Obtener todos los personajes
-GET /api/characters/{id}      # Obtener personaje por ID
-GET /api/characters/occupation/{occupation} # Buscar por ocupación
+Para ello deberás abrir una terminal y navegar a la carpeta donde quieras añadir este retoBit.
+
+Utiliza el siguiente comando:
+
+```commandline
+git clone https://aqui.debes.pegar.la.url
 ```
 
-### 🔧 Para implementar
-```http
-GET /api/characters/status/{status}    # Buscar por estado (ALIVE/DEAD)
-POST /api/characters                   # Crear nuevo personaje
-PUT /api/characters/{id}               # Actualizar personaje
-```
+**Nota: Después del 'git clone' debes pegar la url del repositorio. No pongas la que he puesto yo en el ejemplo 🤣*
 
-## 💡 Tips para el desarrollo
+Ahora se va a crear un nuevo directorio con el nombre del retobit.
 
-1. **Usa Lombok**: Aprovecha `@Data`, `@Entity`, `@NoArgsConstructor` para reducir boilerplate
-2. **Validaciones**: Utiliza Bean Validation en los DTOs
-3. **Excepciones**: Crea respuestas HTTP semánticamente correctas
-4. **Testing**: Prueba tus endpoints con Postman o desde H2 Console
+### 3. ¡Ya puedes abrir este reto en IntelliJ!
+
+# Instrucciones
+
+## Tarea 1: Implementación de Endpoints
+
+1. **Obtener personaje por ID**:
+   - Implementa el método `findById` en `CharacterServiceImpl`.
+   - Usa `characterRepository.findById(id)` para buscar el personaje.
+   - Lanza una excepción `CharacterNotFoundException` si el personaje no existe.
+   - Implementa el endpoint correspondiente en `CharacterController` usando `@GetMapping("/{id}")`.
+
+2. **Cambiar estado de Alive a Dead**:
+   - Implementa el método `updateStatusToDead` en `CharacterServiceImpl`.
+   - Busca el personaje por ID, cambia su estado a `DEAD` y guarda los cambios.
+   - Implementa el endpoint correspondiente en `CharacterController` usando `@PatchMapping("/{id}/status")`.
+
+## Tarea 2: Validaciones
+
+**DTO para creación de personajes**:
+El endpoint para crear personajes ya está implementado, pero debemos asegurarnos de que los datos enviados cumplen con ciertas validaciones.
+   - Agrega validaciones en `CreateCharacterDTO`.
+   - Usa anotaciones como `@NotBlank`, `@NotNull` y `@Size` para validar los campos obligatorios y limitar la longitud de texto.
+
+## Testing
+
+Para comprobar si has realizado bien el ejercicio ejecuta los tests. Puedes ejecutarlos todos a la vez con el botón derecho en el directorio **src/test/java** seleccionando la opción 'Run tests in Java'.
+
+El test te indicará si has pasado con un tick verde ✅. En caso contrario verás el error.
+
+Ejemplo:
+
+![img.png](public/img3.png)
+
+Pulsa en cualquiera de los tests que has fallado y mira el mensaje de la derecha.
+
+- *Expected*: es el valor que el test estaba esperando.
+- *Actual*: es el valor que tu reto está retornando.
+
+## Solución
+
+Si quieres ver una posible solución para el retoBit que pasa todos los tests puedes mirar la rama *solution* dentro del repositorio.
+
+![rama solution](public/img4.png)
+
+Ten en cuenta que hay muchas formas de resolver los ejercicios y la tuya puede pasar los tests iguales, pero ser completamente distinta a la solución. No significa que la tuya esté mal. Compara los resultados y decide cuál te gusta más o te parece más legible.
+
+## Entrega
+
+Realiza un commit con los cambios desde la terminal:
+
+1. Añade todos los cambios
+````commandline
+git add .
+````
+
+2. Haz el commit con el mensaje
+````commandline
+git commit -m "retobit finalizado"
+````
+
+3. Haz un push
+````commandline
+git push origin main
+````
+
+Debes realizar una pull request para entregar el ejercicio. Abre el link del repositorio en github y haz click en la pestaña *pull requests*.
+
+Selecciona *New pull request*, *Create pull request* y confírmala. Esto hará que yo pueda verlo y revisarlo en caso de que haya fallado algún test para poder darte feedback.
+
+Mucha suerte con el reto. Te mando un abrazo y ¡Sigamos desarrollando! 🫂
+
+[marshall-bits.dev](http://marshall-bits.dev)
+
+*Nota: Estos retos pertenecen al curso de Marcel Bosch de Java para desarrolladores junior. Cualquier uso fuera de este contexto debe estar autorizado explícitamente. Si quieres usar estos ejercicios ponte en contacto conmigo a través de mis redes sociales (visita mi página para [más información](http://marshall-bits.dev)).*

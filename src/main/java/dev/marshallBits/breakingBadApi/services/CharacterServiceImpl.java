@@ -2,12 +2,10 @@ package dev.marshallBits.breakingBadApi.services;
 
 import dev.marshallBits.breakingBadApi.dto.CharacterDTO;
 import dev.marshallBits.breakingBadApi.dto.CreateCharacterDTO;
-import dev.marshallBits.breakingBadApi.exceptions.CharacterNotFoundException;
 import dev.marshallBits.breakingBadApi.models.Character;
 import dev.marshallBits.breakingBadApi.repositories.CharacterRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,7 +30,7 @@ public class CharacterServiceImpl implements CharacterService {
         return convertToDTO(character);
     }
 
-    // 🔧 PARA COMPLETAR: Obtener personaje por ID
+    // TODO: Obtener personaje por ID
     @Override
     public CharacterDTO findById(Long id) {
         // PISTA: Usar characterRepository.findById(id)
@@ -40,7 +38,7 @@ public class CharacterServiceImpl implements CharacterService {
         throw new UnsupportedOperationException("¡Implementa este método!");
     }
 
-    // 🔧 PARA COMPLETAR: Cambiar estado de Alive a Dead
+    // TODO: Cambiar estado de Alive a Dead
     @Override
     public CharacterDTO updateStatusToDead(Long id) {
         // PISTA: Buscar personaje por ID, cambiar estado a DEAD, guardar cambios
@@ -53,7 +51,6 @@ public class CharacterServiceImpl implements CharacterService {
                 character.getName(),
                 character.getOccupation(),
                 character.getStatus(),
-                character.getSeasons(),
                 character.getImageUrl()
         );
     }
@@ -63,7 +60,6 @@ public class CharacterServiceImpl implements CharacterService {
         character.setName(dto.getName());
         character.setOccupation(dto.getOccupation());
         character.setStatus(dto.getStatus());
-        character.setSeasons(dto.getSeasons());
         character.setImageUrl(dto.getImageUrl());
         return character;
     }

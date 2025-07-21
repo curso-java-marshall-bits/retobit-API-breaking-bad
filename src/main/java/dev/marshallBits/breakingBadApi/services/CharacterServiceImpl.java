@@ -5,7 +5,9 @@ import dev.marshallBits.breakingBadApi.dto.CreateCharacterDTO;
 import dev.marshallBits.breakingBadApi.models.Character;
 import dev.marshallBits.breakingBadApi.repositories.CharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,8 +36,9 @@ public class CharacterServiceImpl implements CharacterService {
     // TODO: Obtener personaje por ID
     @Override
     public CharacterDTO findById(Long id) {
-        // PISTA: Usar characterRepository.findById(id)
-        throw new UnsupportedOperationException("¡Implementa este método!");
+        Character foundCharacter = characterRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Recurso no encontrado"));
+        return convertToDTO(foundCharacter);
     }
 
     // TODO: Cambiar estado de Alive a Dead

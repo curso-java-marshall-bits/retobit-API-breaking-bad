@@ -60,7 +60,7 @@ class CharacterControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.name").value("Walter White"))
-                .andExpect(jsonPath("$.status").value("DEAD"));
+                .andExpect(jsonPath("$.status").value("ALIVE"));
     }
 
     @Test

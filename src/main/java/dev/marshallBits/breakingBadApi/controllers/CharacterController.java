@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
+
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class CharacterController {
     @Autowired
     private CharacterServiceImpl characterService;
 
-     // ✅ IMPLEMENTADO: Obtener todos los personajes
+    // ✅ IMPLEMENTADO: Obtener todos los personajes
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<CharacterDTO> getAllCharacters() {
@@ -31,12 +32,11 @@ public class CharacterController {
         return characterService.createCharacter(createCharacterDTO);
     }
 
-    // 🔧 TODO: Obtener personaje por ID
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CharacterDTO getCharacterById() {
-        // Usar characterService.findById(id)
-        throw new UnsupportedOperationException("¡Implementa este endpoint!");
+    public CharacterDTO getCharacterById(@PathVariable Long id) {
+        return characterService.findById(id);
     }
 
     // 🔧 TODO: Cambiar estado de Alive a Dead

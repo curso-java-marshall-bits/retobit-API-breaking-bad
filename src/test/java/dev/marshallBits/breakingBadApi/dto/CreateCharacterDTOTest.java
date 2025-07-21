@@ -31,7 +31,6 @@ class CreateCharacterDTOTest {
                 "Walter White",
                 "High School Chemistry Teacher",
                 CharacterStatus.ALIVE,
-                Arrays.asList(1, 2, 3, 4, 5),
                 "walter.jpg"
         );
 
@@ -47,7 +46,6 @@ class CreateCharacterDTOTest {
                 "",
                 "High School Chemistry Teacher",
                 CharacterStatus.ALIVE,
-                Arrays.asList(1, 2, 3, 4, 5),
                 "walter.jpg"
         );
 
@@ -65,7 +63,6 @@ class CreateCharacterDTOTest {
                 null,
                 "High School Chemistry Teacher",
                 CharacterStatus.ALIVE,
-                Arrays.asList(1, 2, 3, 4, 5),
                 "walter.jpg"
         );
 
@@ -83,7 +80,6 @@ class CreateCharacterDTOTest {
                 "Walter White",
                 "",
                 CharacterStatus.ALIVE,
-                Arrays.asList(1, 2, 3, 4, 5),
                 "walter.jpg"
         );
 
@@ -101,7 +97,6 @@ class CreateCharacterDTOTest {
                 "Walter White",
                 "High School Chemistry Teacher",
                 null,
-                Arrays.asList(1, 2, 3, 4, 5),
                 "walter.jpg"
         );
 
@@ -120,13 +115,12 @@ class CreateCharacterDTOTest {
                 longName,
                 "High School Chemistry Teacher",
                 CharacterStatus.ALIVE,
-                Arrays.asList(1, 2, 3, 4, 5),
                 "walter.jpg"
         );
 
         Set<ConstraintViolation<CreateCharacterDTO>> validationErrors = validator.validate(dto);
 
-        assertFalse(validationErrors.isEmpty(), "Debería haber errores de validación cuando el nombre es muy largo");
+        assertFalse(validationErrors.isEmpty(), "Debería haber errores de validación cuando el nombre es más largo de 100 caracteres");
         assertTrue(validationErrors.stream().anyMatch(v -> v.getPropertyPath().toString().equals("name")),
                 "Debería haber un error de validación en el campo 'name'");
     }
@@ -139,13 +133,12 @@ class CreateCharacterDTOTest {
                 "Walter White",
                 longOccupation,
                 CharacterStatus.ALIVE,
-                Arrays.asList(1, 2, 3, 4, 5),
                 "walter.jpg"
         );
 
         Set<ConstraintViolation<CreateCharacterDTO>> validationErrors = validator.validate(dto);
 
-        assertFalse(validationErrors.isEmpty(), "Debería haber errores de validación cuando la ocupación es muy larga");
+        assertFalse(validationErrors.isEmpty(), "Debería haber errores de validación cuando la ocupación es más de 200 caracteres");
         assertTrue(validationErrors.stream().anyMatch(v -> v.getPropertyPath().toString().equals("occupation")),
                 "Debería haber un error de validación en el campo 'occupation'");
     }
@@ -161,7 +154,6 @@ class CreateCharacterDTOTest {
                 maxLengthName,
                 maxLengthOccupation,
                 CharacterStatus.ALIVE,
-                Arrays.asList(1, 2, 3, 4, 5),
                 "walter.jpg"
         );
 
@@ -178,7 +170,6 @@ class CreateCharacterDTOTest {
                 "Walter White",
                 "High School Chemistry Teacher",
                 CharacterStatus.ALIVE,
-                null,
                 null
         );
 

@@ -10,12 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Arrays;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -43,7 +39,7 @@ class CharacterControllerTest {
     @Test
     @DisplayName("Debe crear un nuevo personaje correctamente")
     void shouldCreateCharacter() throws Exception {
-        CreateCharacterDTO createDTO = new CreateCharacterDTO("Saul Goodman", "Lawyer", CharacterStatus.ALIVE, Arrays.asList(2, 3, 4, 5), "saul.jpg");
+        CreateCharacterDTO createDTO = new CreateCharacterDTO("Saul Goodman", "Lawyer", CharacterStatus.ALIVE, "saul.jpg");
         CharacterDTO responseDTO = new CharacterDTO(3L, "Saul Goodman", "Lawyer", CharacterStatus.ALIVE, "saul.jpg");
 
         mockMvc.perform(post("/api/characters")
@@ -100,7 +96,7 @@ class CharacterControllerTest {
     @Test
     @DisplayName("Debe devolver 400 al crear un personaje con datos inválidos")
     void shouldReturnBadRequestWhenCreateCharacterWithInvalidData() throws Exception {
-        CreateCharacterDTO invalidDTO = new CreateCharacterDTO("", "", null, null, "");
+        CreateCharacterDTO invalidDTO = new CreateCharacterDTO("", "", null, "");
 
         mockMvc.perform(post("/api/characters")
                 .contentType(MediaType.APPLICATION_JSON)

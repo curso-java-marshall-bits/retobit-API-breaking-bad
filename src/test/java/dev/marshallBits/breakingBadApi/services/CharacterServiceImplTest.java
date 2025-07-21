@@ -2,7 +2,6 @@ package dev.marshallBits.breakingBadApi.services;
 
 import dev.marshallBits.breakingBadApi.dto.CharacterDTO;
 import dev.marshallBits.breakingBadApi.dto.CreateCharacterDTO;
-import dev.marshallBits.breakingBadApi.exceptions.CharacterNotFoundException;
 import dev.marshallBits.breakingBadApi.models.Character;
 import dev.marshallBits.breakingBadApi.models.CharacterStatus;
 import dev.marshallBits.breakingBadApi.repositories.CharacterRepository;
@@ -13,6 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -68,7 +68,7 @@ class CharacterServiceImplTest {
     @Test
     @DisplayName("Debe crear un nuevo personaje correctamente desde el servicio")
     void shouldCreateCharacter() {
-        CreateCharacterDTO createDTO = new CreateCharacterDTO("Saul Goodman", "Lawyer", CharacterStatus.ALIVE, Arrays.asList(2, 3, 4, 5), "saul.jpg");
+        CreateCharacterDTO createDTO = new CreateCharacterDTO("Saul Goodman", "Lawyer", CharacterStatus.ALIVE, "saul.jpg");
         Character savedCharacter = new Character();
         savedCharacter.setId(3L);
         savedCharacter.setName("Saul Goodman");
@@ -108,12 +108,12 @@ class CharacterServiceImplTest {
         Long nonExistentId = 999L;
         when(characterRepository.findById(nonExistentId)).thenReturn(Optional.empty());
 
-        CharacterNotFoundException exception = assertThrows(
-            CharacterNotFoundException.class,
+        ResponseStatusException exception = assertThrows(
+            ResponseStatusException.class,
             () -> characterService.findById(nonExistentId)
         );
 
-        assertTrue(exception.getMessage().contains("999"));
+        assertTrue(exception.getMessage().contains("Recurso no encontrado"), "La excepción debe incluir el mensaje: 'Recurso no encontrado'");
         verify(characterRepository).findById(nonExistentId);
     }
 
@@ -146,12 +146,12 @@ class CharacterServiceImplTest {
         Long nonExistentId = 999L;
         when(characterRepository.findById(nonExistentId)).thenReturn(Optional.empty());
 
-        CharacterNotFoundException exception = assertThrows(
-            CharacterNotFoundException.class,
+        ResponseStatusException exception = assertThrows(
+            ResponseStatusException.class,
             () -> characterService.updateStatusToDead(nonExistentId)
         );
 
-        assertTrue(exception.getMessage().contains("999"));
+        assertTrue(exception.getMessage().contains("Recurso no encontrado"), "La excepción debe incluir el mensaje: 'Recurso no encontrado'");
         verify(characterRepository).findById(nonExistentId);
         verify(characterRepository, never()).save(any(Character.class));
     }

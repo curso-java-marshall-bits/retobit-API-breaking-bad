@@ -67,7 +67,7 @@ Ahora se va a crear un nuevo directorio con el nombre del retobit.
 1. **Obtener personaje por ID**:
    - Implementa el método `findById` en `CharacterServiceImpl`.
    - Usa `characterRepository.findById(id)` para buscar el personaje.
-   - Lanza una excepción `CharacterNotFoundException` si el personaje no existe.
+   - Lanza una excepción `ResponseStatusException` si el personaje no existe para mandar una respuesta de **404 Not found** con el mensaje: `Recurso no encontrado`.
    - Implementa el endpoint correspondiente en `CharacterController` usando `@GetMapping("/{id}")`.
 
 2. **Cambiar estado de Alive a Dead**:
@@ -81,6 +81,8 @@ Ahora se va a crear un nuevo directorio con el nombre del retobit.
 El endpoint para crear personajes ya está implementado, pero debemos asegurarnos de que los datos enviados cumplen con ciertas validaciones.
    - Agrega validaciones en `CreateCharacterDTO`.
    - Usa anotaciones como `@NotBlank`, `@NotNull` y `@Size` para validar los campos obligatorios y limitar la longitud de texto.
+   - `name` debe tener un máximo de 100 caracteres.
+   - `occupation` debe tener un máximo de 200 caracteres.
 
 ## Testing
 

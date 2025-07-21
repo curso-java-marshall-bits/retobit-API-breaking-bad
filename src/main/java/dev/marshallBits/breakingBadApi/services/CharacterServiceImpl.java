@@ -3,6 +3,7 @@ package dev.marshallBits.breakingBadApi.services;
 import dev.marshallBits.breakingBadApi.dto.CharacterDTO;
 import dev.marshallBits.breakingBadApi.dto.CreateCharacterDTO;
 import dev.marshallBits.breakingBadApi.models.Character;
+import dev.marshallBits.breakingBadApi.models.CharacterStatus;
 import dev.marshallBits.breakingBadApi.repositories.CharacterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,8 +45,12 @@ public class CharacterServiceImpl implements CharacterService {
     // TODO: Cambiar estado de Alive a Dead
     @Override
     public CharacterDTO updateStatusToDead(Long id) {
-        // PISTA: Buscar personaje por ID, cambiar estado a DEAD, guardar cambios
-        throw new UnsupportedOperationException("¡Implementa este método!");
+        Character foundCharacter = characterRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Recurso no encontrado"));
+        foundCharacter.setStatus(CharacterStatus.DEAD);
+        characterRepository.save(foundCharacter);
+
+        return convertToDTO(foundCharacter);
     }
 
     private CharacterDTO convertToDTO(Character character) {

@@ -42,8 +42,7 @@ public class CharacterController {
     // 🔧 TODO: Cambiar estado de Alive a Dead
     @PatchMapping("/{id}/status")
     @ResponseStatus(HttpStatus.OK)
-    public CharacterDTO updateCharacterStatus() {
-        // Usar characterService.updateStatusToDead(id)
-        throw new UnsupportedOperationException("¡Implementa este endpoint!");
+    public CharacterDTO updateCharacterStatus(@PathVariable Long id) {
+        return characterService.updateStatusToDead(id);
     }
 }

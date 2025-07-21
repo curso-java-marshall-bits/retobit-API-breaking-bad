@@ -1,12 +1,14 @@
 # RetoBit: API de Breaking Bad 👨‍🔬
 
-En este RetoBit vamos a continuar el desarrollo de una API de breaking bad. La API ya fue implementada por compis de nuestro equipo y ahora nos han asignado la tarea de añadir nuevas funcionalidades. Deberemos implementar dos endpoints que nos permitirán obtener un personaje por su ID y cambiar su estado de "Alive" a "Dead". Además, también debemos añadir validaciones en el DTO de creación de personajes.
+En este RetoBit vamos a continuar el desarrollo de una API de breaking bad. La API ya fue inicializada por compis de nuestro equipo y ahora nos han asignado la tarea de añadir nuevas funcionalidades. Deberemos implementar dos endpoints que nos permitirán obtener un personaje por su ID y cambiar su estado de "Alive" a "Dead". Además, también debemos añadir validaciones en el DTO de creación de personajes.
 
-Puedes ejecutar el proyecto para ver cómo funciona la API y probar los endpoints ya están implementados. La API está construida con Spring Boot y utiliza una base de datos en memoria para almacenar los personajes, así que **no hace falta que configures nada**. Simplemente, ejecuta el proyecto y podrás probar los endpoints ya implementados con Postman.
+Puedes ejecutar el proyecto para ver cómo funciona la API y probar los endpoints ya están implementados. La API está construida con Spring Boot y utiliza una base de datos en memoria para almacenar los personajes, así que **no hace falta que configures nada relativo a la base de datos**. Simplemente, ejecuta el proyecto y podrás probar los endpoints ya implementados con Postman usando el puerto `8080`.
 
 ### Endpoints ya implementados:
 - `GET /api/characters`: Obtiene todos los personajes.
 - `POST /api/characters`: Crea un nuevo personaje.
+
+**Añade el puerto `8080` a la URL de la API para probar los endpoints. Por ejemplo, si quieres probar el endpoint `GET /api/characters`, la URL completa sería `http://localhost:8080/api/characters`.*
 
 ## ¿Qué practicarás?
 

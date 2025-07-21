@@ -26,7 +26,5 @@ public class CreateCharacterDTO {
 
     private CharacterStatus status;
 
-    private List<Integer> seasons;
-
     private String imageUrl;
 }

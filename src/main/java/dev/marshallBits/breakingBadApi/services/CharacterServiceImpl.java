@@ -35,7 +35,6 @@ public class CharacterServiceImpl implements CharacterService {
     @Override
     public CharacterDTO findById(Long id) {
         // PISTA: Usar characterRepository.findById(id)
-        // Lanzar CharacterNotFoundException si no existe
         throw new UnsupportedOperationException("¡Implementa este método!");
     }
 
